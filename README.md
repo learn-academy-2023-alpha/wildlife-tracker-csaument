@@ -7,11 +7,30 @@ The Forest Service is considering a proposal to place in conservancy a forest of
 
 ### Acceptance Criteria
 
-[] Create a resource for animal with the following information: common name and scientific binomial
-[] Can see the data response of all the animals
-[] Can create a new animal in the database
-[] Can update an existing animal in the database
-[] Can remove an animal entry in the database
+[x] Create a resource for animal with the following information: common name and scientific binomial
+```console
+rails g resource Animal common_name:string scientific_binomial:string
+
+rails c
+
+Animal.create(common_name: 'Human', scientific_binomial: 'Homo sapien')
+Animal.create(common_name: 'Gray wolf', scientific_binomial: 'Canis lupus')
+Animal.create(common_name: 'Lion', scientific_binomial: 'Panthera leo')
+Animal.create(common_name: 'Arabian camel', scientific_binomial: 'Camelus dromedarius')
+Animal.create(common_name: 'Asian elephant', scientific_binomial: 'Elephas maximus')
+Animal.create(common_name: 'Brown tree snake', scientific_binomial: 'Boiga irregularis')
+Animal.create(common_name: 'Polar bear', scientific_binomial: 'Ursus maritimus')
+Animal.create(common_name: 'Buffalo', scientific_binomial: '	Bubalus bubalis')
+Animal.create(common_name: 'Cheetah', scientific_binomial: 'Acinonyx jubatus')
+Animal.create(common_name: 'Cow', scientific_binomial: 'Bos taurus')
+
+exit
+```
+[x] Can see the data response of all the animals
+* Functions in Postman
+[x] Can create a new animal in the database
+[x] Can update an existing animal in the database
+[x] Can remove an animal entry in the database
 
 
 ## Story 2: In order to track wildlife sightings, as a user of the API, I need to manage animal sightings.
