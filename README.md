@@ -43,6 +43,10 @@ exit
 * Hint: An animal has_many sightings (rails g resource Sighting animal_id:integer ...)
 * Hint: Date is written in Active Record as yyyy-mm-dd (“2022-07-28")
 [x] Can create a new animal sighting in the database
+* Note: compound words are particular with snake_case and PascalCase, as well as singular and plurals. A cheat sheet would be useful...
+```console
+animal.animal_sighting.create(latitude: 33.0, longitude: -117.0, date: "2023-03-30")
+```
 [x] Can update an existing animal sighting in the database
 [x] Can remove an animal sighting in the database
 * Note: Unable to create a sighting through an animal, despite association...
