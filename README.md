@@ -126,5 +126,5 @@ get '/animal_sightings/dates' => 'animal_sightings#date_index'
 
 ### Acceptance Criteria
 
-[] Can create new animal along with sighting data in a single API request
+[x] Can create new animal along with sighting data in a single API request
 * Hint: Look into accepts_nested_attributes_for

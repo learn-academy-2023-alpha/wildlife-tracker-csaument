@@ -22,6 +22,8 @@ class AnimalSighting < ApplicationRecord
       validates_with LatValidator
       validates_with LongValidator
 
+      accepts_nested_attributes_for :animal
+
       validates :latitude, presence: true
       validates :longitude, presence: true
       validates :date, presence: true

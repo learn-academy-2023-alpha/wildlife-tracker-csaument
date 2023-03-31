@@ -12,6 +12,8 @@ class Animal < ApplicationRecord
       include ActiveModel::Validations
       validates_with ScienceValidator
 
+      accepts_nested_attributes_for :animal_sightings
+
       validates :common_name, presence: true, uniqueness: true
       validates :scientific_binomial, presence: true, uniqueness: true
 end
