@@ -43,6 +43,10 @@ exit
 * Hint: An animal has_many sightings (rails g resource Sighting animal_id:integer ...)
 * Hint: Date is written in Active Record as yyyy-mm-dd (“2022-07-28")
 [x] Can create a new animal sighting in the database
+* Note: compound words are particular with snake_case and PascalCase, as well as singular and plurals. A cheat sheet would be useful...
+```console
+animal.animal_sighting.create(latitude: 33.0, longitude: -117.0, date: "2023-03-30")
+```
 [x] Can update an existing animal sighting in the database
 [x] Can remove an animal sighting in the database
 * Note: Unable to create a sighting through an animal, despite association...
@@ -54,9 +58,23 @@ exit
 
 ### Acceptance Criteria
 
-[] Can see one animal with all its associated sightings
+[x] Can see one animal with all its associated sightings
 * Hint: Checkout this example on how to include associated records
-[] Can see all the all sightings during a given time period
+
+Animal Sightings Controller
+```ruby
+def animal_index
+      sightings = AnimalSighting.where(animal_id: params[:id])
+      render json: sightings, include: [:animal]
+end
+```
+
+Routes
+```ruby
+get '/animals/:id/sightings' => 'animal_sightings#animal_index'
+```
+
+[x] Can see all the all sightings during a given time period
 * Hint: Your controller can use a range to look like this:
 ```ruby
 class SightingsController < ApplicationController
@@ -65,6 +83,19 @@ class SightingsController < ApplicationController
     render json: sightings
   end
 end
+```
+
+Animal Sightings Controller 
+```ruby
+def date_index
+      sightings = AnimalSighting.where(date: params[:start_date]..params[:end_date])
+      render json: sightings
+end
+```
+
+Routes *Must be above resource line*
+```ruby
+get '/animal_sightings/dates' => 'animal_sightings#date_index'
 ```
 * Hint: Be sure to add the start_date and end_date to what is permitted in your strong parameters method
 * Hint: Utilize the params section in Postman to ease the developer experience
