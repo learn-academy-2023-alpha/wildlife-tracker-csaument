@@ -1,48 +1,40 @@
 class AnimalsController < ApplicationController
+      rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+      rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+
+      def render_unprocessable_entity_response(exception)
+            render json: exception.record.errors, status: :unprocessable_entity
+      end
+  
+      def render_not_found_response(exception)
+            render json: { error: exception.message }, status: :not_found
+      end
+
       def index
             animals = Animal.all
             render json: animals
       end
 
       def show
-            animal = Animal.find(params[:id])
+            animal = Animal.find!(params[:id])
             render json: animal
       end
 
-      # def new
-
-      # end
-
       def create
-            animal = Animal.create(animal_params)
-            if animal.valid?
-              render json: animal
-            else
-              render json: animal.errors
-            end
+            animal = Animal.create!(animal_params)
+            render json: animal
       end
-
-      # def edit
-
-      # end
 
       def update
             animal = Animal.find(params[:id])
-            animal.update(animal_params)
-            if animal.valid?
-              render json: animal
-            else
-              render json: animal.errors
-            end
+            animal.update!(animal_params)
+            render json: animal
       end
 
       def destroy
             animal = Animal.find(params[:id])
-            if animal.destroy
-              render json: animal
-            else
-              render json: animal.errors
-            end
+            animal.destroy!
+            render json: animal
       end
 
       private

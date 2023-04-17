@@ -45,7 +45,7 @@ exit
 [x] Can create a new animal sighting in the database
 * Note: compound words are particular with snake_case and PascalCase, as well as singular and plurals. A cheat sheet would be useful...
 ```console
-animal.animal_sighting.create(latitude: 33.0, longitude: -117.0, date: "2023-03-30")
+animal.animal_sightings.create(latitude: 33.0, longitude: -117.0, date: "2023-03-30")
 ```
 [x] Can update an existing animal sighting in the database
 [x] Can remove an animal sighting in the database
@@ -108,14 +108,16 @@ get '/animal_sightings/dates' => 'animal_sightings#date_index'
 ### Branch: animal-sightings-specs
 
 ### Acceptance Criteria
-[] Validations will require specs in spec/models and the controller methods will require specs in spec/requests.
+[x] Validations will require specs in spec/models and the controller methods will require specs in spec/requests.
 
-[] Can see validation errors if an animal doesn't include a common name and scientific binomial
-[] Can see validation errors if a sighting doesn't include latitude, longitude, or a date
-[] Can see a validation error if an animal's common name exactly matches the scientific binomial
-[] Can see a validation error if the animal's common name and scientific binomial are not unique
-[] Can see a status code of 422 when a post request can not be completed because of validation errors
+[x] Can see validation errors if an animal doesn't include a common name and scientific binomial
+[x] Can see validation errors if a sighting doesn't include latitude, longitude, or a date
+[x] Can see a validation error if an animal's common name exactly matches the scientific binomial
+[x] Can see a validation error if the animal's common name and scientific binomial are not unique
+[x] Can see a validation error if latitude and longitude are not geographically valid
+[x] Can see a status code of 422 when a post request can not be completed because of validation errors
 * Hint: Handling Errors in an API Application the Rails Way
+* Note: Must use ! for methods in controllers.
 
 
 ## Story 5: In order to increase efficiency, as a user of the API, I need to add an animal and a sighting at the same time.
